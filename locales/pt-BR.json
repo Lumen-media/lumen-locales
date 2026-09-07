@@ -334,5 +334,18 @@
   "Reload": "Recarregar",
   "Disable": "Desativar",
   "Uninstall": "Desinstalar",
-  "No modules installed": "Nenhum módulo instalado"
+  "No modules installed": "Nenhum módulo instalado",
+  "Translations": "Traduções",
+  "Languages": "Idiomas",
+  "Download localized language files to your device and keep translations up to date.": "Baixe arquivos de idioma localizados para o seu dispositivo e mantenha as traduções atualizadas.",
+  "Manage localized language files for the app interface.": "Gerencie os arquivos de idioma localizados para a interface do aplicativo.",
+  "Check for updates": "Verificar atualizações",
+  "Update now": "Atualizar agora",
+  "Current release": "Versão atual",
+  "A new translation release is available": "Uma nova versão de tradução está disponível",
+  "You are up to date": "Você está atualizado",
+  "Could not reach the translation server": "Não foi possível acessar o servidor de traduções",
+  "Installed release {{tag}}": "Versão instalada {{tag}}",
+  "No translations installed yet": "Nenhuma tradução instalada ainda",
+  "Installed languages": "Idiomas instalados"
 }

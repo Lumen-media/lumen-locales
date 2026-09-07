@@ -334,5 +334,18 @@
   "Reload": "Reload",
   "Disable": "Disable",
   "Uninstall": "Uninstall",
-  "No modules installed": "No modules installed"
+  "No modules installed": "No modules installed",
+  "Translations": "Translations",
+  "Languages": "Languages",
+  "Download localized language files to your device and keep translations up to date.": "Download localized language files to your device and keep translations up to date.",
+  "Manage localized language files for the app interface.": "Manage localized language files for the app interface.",
+  "Check for updates": "Check for updates",
+  "Update now": "Update now",
+  "Current release": "Current release",
+  "A new translation release is available": "A new translation release is available",
+  "You are up to date": "You are up to date",
+  "Could not reach the translation server": "Could not reach the translation server",
+  "Installed release {{tag}}": "Installed release {{tag}}",
+  "No translations installed yet": "No translations installed yet",
+  "Installed languages": "Installed languages"
 }
