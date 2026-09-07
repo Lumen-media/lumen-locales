@@ -21,7 +21,7 @@ scripts/
 
 ## Releases
 
-On merge to `main`, the `release` workflow validates again and creates an immutable tag `v<date>-<commit>`; each commit produces a unique URL so jsDelivr never serves stale content:
+On merge to `main`, the `release` workflow validates again and creates an immutable tag `v<date>.<n>` — a per-day counter (`v2026.09.07.1`, `.2`, …), no hashtags. Every release is unique, so jsDelivr never serves stale content:
 
 ```
 https://cdn.jsdelivr.net/gh/Lumen-media/lumen-locales@<tag>/locales/pt-BR.json

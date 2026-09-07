@@ -20,7 +20,11 @@ jobs:
       - run: node scripts/validate.mjs
       - name: Compute tag
         id: tag
-        run: echo "version=v$(date +%Y.%m.%d)-$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+        run: |
+          BASE="v$(date +%Y.%m.%d)"
+          git fetch --tags --prune origin >/dev/null 2>&1 || true
+          COUNT=$(git tag --list "${BASE}."* 2>/dev/null | wc -l)
+          echo "version=${BASE}.$((COUNT + 1))" >> "$GITHUB_OUTPUT"
       - name: Tag and release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
