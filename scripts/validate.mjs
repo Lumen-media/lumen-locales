@@ -49,7 +49,7 @@ for (const [file, data] of Object.entries(parsed)) {
   if (missing.length > 0) {
     const preview = missing.slice(0, 5).join(', ');
     fail(
-      `${file} is missing ${missing.length} key(s) present in en.json: ${preview}${missing.length > 5 ? ', …' : ''}`,
+      `${file} is missing ${missing.length} key(s) present in en.json: ${preview}${missing.length > 5 ? ', …' : ''}`
     );
   }
 }
