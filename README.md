@@ -36,3 +36,14 @@ Lumen checks the latest tag at startup (background, silent on failure), download
 ```sh
 node scripts/validate.mjs
 ```
+
+### Machine-translating a new language (Gemini)
+
+Requires a [Gemini API key](https://aistudio.google.com/apikey) — the script uses Node's built-in `fetch`, no installs:
+
+```sh
+cp .env.example .env   # paste your key
+pnpm translate fr --name French --native "Français"
+```
+
+`pnpm translate` loads `.env` automatically; a plain `node scripts/translate.mjs <code>` works too if `GEMINI_API_KEY` is already in your shell. The script reads `en.json`, translates every key that is missing in `locales/<code>.json` (creating the file if needed), keeps keys/placeholders like `{{count}}` and HTML intact, rejects active content, then runs the validator. `--name`/`--native` also register the language in `languages.json` so the app picks it up. The Gemini model defaults to `gemini-3.8-flash`; override it with the `GEMINI_MODEL` env var or `--model <name>`.

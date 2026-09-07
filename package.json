@@ -6,6 +6,7 @@
   "description": "Lumen open-source translation files.",
   "scripts": {
     "validate": "node scripts/validate.mjs",
+    "translate": "node --env-file-if-exists=.env scripts/translate.mjs",
     "lint": "biome lint .",
     "format": "biome format --write .",
     "check": "pnpm validate && biome check ."
@@ -14,6 +15,6 @@
     "@biomejs/biome": "^2.5.2"
   },
   "engines": {
-    "node": ">=20"
+    "node": ">=22.9.0"
   }
 }
