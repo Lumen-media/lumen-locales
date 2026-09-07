@@ -1,0 +1,13 @@
+{
+  "name": "@lumen-media/locales",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Lumen open-source translation files.",
+  "scripts": {
+    "validate": "node scripts/validate.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
