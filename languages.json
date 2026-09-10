@@ -5,6 +5,11 @@
     "nativeName": "English"
   },
   {
+    "code": "en-GB",
+    "name": "English (United Kingdom)",
+    "nativeName": "English (United Kingdom)"
+  },
+  {
     "code": "es-AR",
     "name": "Spanish (Argentina)",
     "nativeName": "Español (Argentina)"

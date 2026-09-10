@@ -94,6 +94,9 @@ async function run() {
         result[key] = translated[key] ?? en[key];
       }
       console.log(`  done ${Math.min(i + CHUNK_SIZE, missing.length)}/${missing.length}`);
+      if (i + CHUNK_SIZE < missing.length) {
+        await new Promise((resolve) => setTimeout(resolve, 3000));
+      }
     }
   }
 
@@ -236,19 +239,31 @@ async function callGemini(prompt) {
 }
 
 async function callGroq(prompt) {
-  const response = await fetchWithRetries('https://api.groq.com/openai/v1/chat/completions', {
+  const body = {
+    model,
+    messages: [{ role: 'user', content: prompt }],
+    temperature: 0.4,
+  };
+
+  let response = await fetchWithRetries('https://api.groq.com/openai/v1/chat/completions', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${apiKey}`,
     },
-    body: JSON.stringify({
-      model,
-      messages: [{ role: 'user', content: prompt }],
-      temperature: 0.4,
-      response_format: { type: 'json_object' },
-    }),
+    body: JSON.stringify({ ...body, response_format: { type: 'json_object' } }),
   });
+
+  if (response.status === 400) {
+    response = await fetchWithRetries('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${apiKey}`,
+      },
+      body: JSON.stringify(body),
+    });
+  }
 
   const data = await response.json();
   const text = data?.choices?.[0]?.message?.content;
@@ -261,11 +276,11 @@ async function callGroq(prompt) {
 async function fetchWithRetries(url, options, retries = 6) {
   for (let attempt = 1; ; attempt++) {
     const response = await fetch(url, options);
-    if (response.ok) return response;
+    if (response.ok || response.status === 400) return response;
     if (response.status !== 429 || attempt > retries) {
       const body = await response.text().catch(() => '');
       const hint =
-        response.status === 400 || response.status === 401 || response.status === 403
+        response.status === 401 || response.status === 403
           ? ' — check that GROQ_API_KEY in .env is a valid key'
           : '';
       fail(`Groq API error (HTTP ${response.status}): ${body.slice(0, 300)}${hint}`);
