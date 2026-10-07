@@ -447,5 +447,13 @@
   "Sync folder": "Sync folder",
   "Set Background": "Set Background",
   "Images": "Images",
-  "Downloading": "Downloading"
+  "Downloading": "Downloading",
+  "Welcome to Lumen": "Welcome to Lumen",
+  "Choose the modules you want to install. You can manage them anytime in Settings → Modules.": "Choose the modules you want to install. You can manage them anytime in Settings → Modules.",
+  "{{count}} selected": "{{count}} selected",
+  "Select all": "Select all",
+  "Could not load the module catalog": "Could not load the module catalog",
+  "No modules available": "No modules available",
+  "Skip for now": "Skip for now",
+  "Install selected": "Install selected"
 }

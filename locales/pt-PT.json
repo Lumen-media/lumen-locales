@@ -447,5 +447,13 @@
   "Sync folder": "Sincronizar pasta",
   "Set Background": "Definir fundo",
   "Images": "Imagens",
-  "Downloading": "A transferir"
+  "Downloading": "A transferir",
+  "Welcome to Lumen": "Bem-vindo ao Lumen",
+  "Choose the modules you want to install. You can manage them anytime in Settings → Modules.": "Escolha os módulos que pretende instalar. Pode geri-los a qualquer momento em Definições → Módulos.",
+  "{{count}} selected": "{{count}} selecionados",
+  "Select all": "Selecionar todos",
+  "Could not load the module catalog": "Não foi possível carregar o catálogo de módulos",
+  "No modules available": "Sem módulos disponíveis",
+  "Skip for now": "Ignorar por agora",
+  "Install selected": "Instalar selecionados"
 }
