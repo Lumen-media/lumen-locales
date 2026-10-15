@@ -1,0 +1,49 @@
+name: Sync Documentation to Central Repo
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+
+      - name: Checkout central docs repository
+        uses: actions/checkout@v4
+        with:
+          repository: Lumen-media/docs
+          token: ${{ secrets.DOCS_SYNC_TOKEN }}
+          path: central-docs
+
+      - name: Copy documentation files
+        run: |
+          REPO_NAME="${{ github.repository }}"
+          REPO_NAME="${REPO_NAME#*/}"
+
+          mkdir -p "central-docs/${REPO_NAME}"
+
+          if [ -d "docs" ]; then
+            cp -r docs/* "central-docs/${REPO_NAME}/"
+          fi
+
+      - name: Commit and push changes
+        run: |
+          cd central-docs
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          if ! git diff --cached --quiet; then
+            git commit -m "docs: sync from ${{ github.repository }}"
+            git push
+          else
+            echo "No changes to commit"
+          fi
